@@ -3,24 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="zyb.css">
+    <link rel="stylesheet" href="zyb.css?v=1">
     <title>Welcome to the Minecraft Official Site | Minecraf</title>
 </head>
 <body>
     <div class="header">
-        <img src="Global-Header_MCCB-Logo_300x51.svg" alt="Logo" class="custom-logo">
+        <a href="file:///F:/16Zhuangtianyou/MyWork/zy/zya.html#game" target="_blank"> 
+            <img src="Global-Header_MCCB-Logo_300x51.svg" alt="Logo" class="custom-logo">
+        </a>
         <nav>
             <ul>
-
-                <li class="m"><a href="#game">GAME</a></li>
-                <li class="d"><a href="#shop">SHOP</a></li>
-                <li class="l"><a href="#community">COMMUNITY</a></li>
-                <li class="e"><a href="#sport">SPORT</a></li>
-
-                <li class="r"><a href="#search">SEARCH</a></li>
-                <li class="g"><a href="#account">ACCOUNT</a></li>
+                <li class="m">
+                    <a href="#game">GAME</a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="image-container">
+                                <img src="Global-Header_Image-Tile_MC-Java-Bedrock_570x321.jpg" alt="Image 1">
+                                <img src="Global-Header_Image-Tile_Marketplace_321x321.avif" alt="Image 2">
+                                <img src="Global-Header_Image-Tile_Realms_321x321.avif" alt="Image 3">
+                            </div>
+                            <a href="#">Minecraft</a>
+                            <a href="#">Minecraft Dungeons</a>
+                            <a href="#">Minecraft Legends</a>
+                            <a href="#">Minecraft Education</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="d">
+                    <a href="#shop">SHOP</a>
+                    <div class="dropdown-menu">
+                        <a href="#">Shop Item 1</a>
+                        <a href="#">Shop Item 2</a>
+                    </div>
+                </li>
+                <li class="l">
+                    <a href="#community">COMMUNITY</a>
+                    <div class="dropdown-menu">
+                        <a href="#">Community Post 1</a>
+                        <a href="#">Community Post 2</a>
+                    </div>
+                </li>
+                <li class="e">
+                    <a href="#sport">SPORT</a>
+                    <div class="dropdown-menu">
+                        <a href="#">Sport Event 1</a>
+                        <a href="#">Sport Event 2</a>
+                    </div>
+                </li>
+                <li class="r">
+                    <a href="#search" id="searchTrigger">SEARCH</a>>
+                </li>
+                <li class="g">
+                    <a href="#account" id="accountTrigger">ACCOUNT</a>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <a href="#">SIGN IN</a>
+                        <a href="#">REDEEM</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </div>
+
+    <div class="search-panel" id="searchPanel">
+        <div class="search-box">
+            <h3>Search</h3>
+            <input type="text" placeholder="Search itinerant.net">
+        </div>
+        
+        <div class="section">
+            <h3>Popular Discoveries</h3>
+            <div class="popular">MUSEARMY</div>
+        </div>
+        
+        <div class="section">
+            <h3>Other Videos</h3>
+            <ul class="video-list">
+                <li>Hinocraft</li>
+                <li>Skins & DLC</li>
+                <li>Change Java Skins & Cages</li>
+                <li>Hinocraft Reales</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const searchTrigger = document.getElementById('searchTrigger');
+        const searchPanel = document.getElementById('searchPanel');
+        
+        searchTrigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (searchPanel.style.display === 'block') {
+                searchPanel.style.display = 'none';
+            } else {
+                searchPanel.style.display = 'block';
+            }
+        });
+        document.addEventListener('click', function(e) {
+            if (!searchPanel.contains(e.target) && e.target !== searchTrigger) {
+                searchPanel.style.display = 'none';
+            }
+        });
+
+        const dropdownItems = document.querySelectorAll('nav ul li');
+        dropdownItems.forEach(item => {
+            const dropdownMenu = item.querySelector('.dropdown-menu');
+            let timer;
+            if (dropdownMenu) {
+                item.addEventListener('mouseenter', () => {
+                    clearTimeout(timer);
+                    dropdownMenu.style.display = 'block';
+                });
+                item.addEventListener('mouseleave', () => {
+                    timer = setTimeout(() => {
+                        dropdownMenu.style.display = 'none';
+                    }, 1500); 
+                });
+            }
+        });
+    </script>
 </body>
 </html>
