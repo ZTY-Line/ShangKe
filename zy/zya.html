@@ -17,15 +17,44 @@
                     <a href="#game">GAME</a>
                     <div class="dropdown-menu">
                         <div class="dropdown-content">
-                            <div class="image-container">
-                                <img src="Global-Header_Image-Tile_MC-Java-Bedrock_570x321.jpg" alt="Image 1">
-                                <img src="Global-Header_Image-Tile_Marketplace_321x321.avif" alt="Image 2">
-                                <img src="Global-Header_Image-Tile_Realms_321x321.avif" alt="Image 3">
+                            <div class="link-container-left">
+                                <a href="#">Minecraft</a>
+                                <a href="#">Minecraft Dungeons</a>
+                                <a href="#">Minecraft Legends</a>
+                                <a href="#">Minecraft Education</a>
+                                <!-- 将两个超链接移动到此处 -->
+                                <a href="https://example.com/link1">Go to Downloads 1</a>
+                                <a href="https://example.com/link2">Redeem a Gift Code 2</a>
                             </div>
-                            <a href="#">Minecraft</a>
-                            <a href="#">Minecraft Dungeons</a>
-                            <a href="#">Minecraft Legends</a>
-                            <a href="#">Minecraft Education</a>
+                            <div class="image-container">
+                                <a href="">
+                                <img src="Global-Header_Image-Tile_MC-Java-Bedrock_570x321.jpg" alt="Image 1">
+                                <p>Minecraft</p>
+                                <p>Explore your own unique world, survive the night, and create
+                                    anything you can imagine!</p>
+                                </a>
+                                <a href="">
+                                <img src="Global-Header_Image-Tile_Marketplace_321x321.avif" alt="Image 2">
+                                <p>Marketplace</p>
+                                <p>Keep your gameplay endlessly
+                                    inventive and fun.</p>
+                                </a>
+                                <a href="">
+                                <img src="Global-Header_Image-Tile_Realms_321x321.avif" alt="Image 3">
+                                <p>Minecraft healMs</p>
+                                <p>Play with your friends on your own
+                                    personal server.</p>
+                                </a>
+                            </div>
+                            <div class="link-container">
+                                <a href="#">Buy Mineoraft</a>
+                                <a href="#">Buy Mineoraft Triple Bundle</a>
+                                <a href="#">Marketplace pass</a>
+                                <a href="#">New to Mineoraft?</a>
+                                <a href="#">Servers</a>
+                                <a href="#">Try Mineoraft Free</a>
+                                <a href="#">Play Mineoraft Classio</a>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -89,19 +118,27 @@
     <script>
         const searchTrigger = document.getElementById('searchTrigger');
         const searchPanel = document.getElementById('searchPanel');
-        
-        searchTrigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (searchPanel.style.display === 'block') {
-                searchPanel.style.display = 'none';
-            } else {
-                searchPanel.style.display = 'block';
-            }
+        let timer;
+
+        searchTrigger.addEventListener('mouseenter', () => {
+            clearTimeout(timer);
+            searchPanel.style.display = 'block';
         });
-        document.addEventListener('click', function(e) {
-            if (!searchPanel.contains(e.target) && e.target !== searchTrigger) {
+
+        searchTrigger.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => {
                 searchPanel.style.display = 'none';
-            }
+            }, 100); 
+        });
+
+        searchPanel.addEventListener('mouseenter', () => {
+            clearTimeout(timer);
+        });
+
+        searchPanel.addEventListener('mouseleave', () => {
+            timer = setTimeout(() => {
+                searchPanel.style.display = 'none';
+            }, 100); 
         });
 
         const dropdownItems = document.querySelectorAll('nav ul li');
@@ -116,7 +153,7 @@
                 item.addEventListener('mouseleave', () => {
                     timer = setTimeout(() => {
                         dropdownMenu.style.display = 'none';
-                    }, 1500); 
+                    }, 100); 
                 });
             }
         });
