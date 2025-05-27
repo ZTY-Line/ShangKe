@@ -1,0 +1,551 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.parent {
+    position: relative;
+    height: 300px;
+}
+
+.header nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.m {
+    margin: 0 10px 0 -1000px;
+}
+
+.e {
+    margin: 0 400px 0 0;
+}
+
+.d {
+    margin: 0 10px 0 0;
+}
+
+.l {
+    margin: 0 10px 0 0;
+}
+
+.right {
+    margin-left: 10px;
+}
+
+.child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-logo {
+    height: 65px;
+    width: 240px;
+    margin-left: 35px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    background-color: black;
+    color: #85b96b;
+}
+
+nav ul li a:active {
+    color: #85b96b;
+}
+
+
+.game-panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.game-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 100px;
+}
+
+.game-section {
+    margin-bottom: 20px;
+}
+
+.game-section h2 {
+    color: #333;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
+.game-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.game-list li {
+    padding: 8px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.game-list li:hover {
+    color: #e67e22;
+}
+
+.game-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.game-footer a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.game-footer a:hover {
+    color: #e67e22;
+}
+.search-panel {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    background-color: black;
+    padding: 20px;
+    box-shadow: 0 2px 10px white(0,0,0,0.2);
+    width: 350px;
+    z-index: 100;
+}
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.section {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.section h3 {
+    margin-top: 0;
+    color: white;
+}
+
+.popular {
+    font-weight: bold;
+    color: white;
+}
+
+.video-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.video-list li {
+    padding: 5px 0;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.video-list li:hover {
+    color: #85b96b;
+}
+
+.account-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    border: 1px solid black; 
+}
+
+.account-dropdown a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    margin-top: 0;  
+}
+
+.account-dropdown a:hover {
+    background-color: black;
+}
+
+li.g:hover .account-dropdown {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .game-content {
+        grid-template-columns: 1fr;
+    }
+
+    .search-panel {
+        width: 90%;
+        right: 5%;
+    }
+}
+
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    z-index: 1;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+    opacity: 0;
+    height: 470px; 
+    top: 70px;
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.image-container {
+    flex: 1;
+}
+
+
+.link-container-left { 
+    display: flex; 
+    flex-direction: column; 
+    margin-right: 110px; 
+    margin-top: 45px; 
+    margin-left: 80px; 
+    padding-bottom: 1px; 
+    width: 65px; 
+    
+}
+
+.link-container-left p {
+    color: white;
+    font-size: 12px;
+}
+
+.link-container-left a { 
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    font-family: Arial, sans-serif;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 440px;
+    margin-top: 70px;
+}
+
+.link-container a {
+    font-size: 15px;
+    transition: transform 0.3s ease;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.link-container a:hover {
+    transform: scale(1.2);
+}
+
+.image-container {
+    display: flex;
+    gap: 40px;
+    max-height: 400px;
+    max-width: 300px;
+    justify-content: 30px;
+    margin: 60px 300px 0 100px;
+}
+
+.image-container img[src$=".jpg"] {
+    max-width: 400px;
+    max-height: 240px;
+}
+
+.image-container img[src$=".avif"] {
+    max-width: 200px;
+    height: 240px;
+}
+
+.dropdown-content img {
+    max-width: 200px;
+    height: 240px;
+    margin-bottom: 10px;
+}
+
+.dropdown-menu.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    margin-top: -20px;
+}
+
+.image-container a, .image-container a:hover {
+    background-color: transparent;
+    color: inherit;
+    padding-left: 0;
+    transform: none;
+    transition: none;
+}
+.link-container a:hover {
+    background-color: #85b96b;
+    color: #333;
+    padding-left: 20px;
+}
+
+nav ul li:hover .dropdown-menu {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+.image-container a p {
+    color: white;
+}
+.image-container a p:nth-child(3) {
+    color: gray;
+    font-size: smaller;
+}
+.link-container-left a:hover {
+    background-color: transparent;
+    color: #85b96b;
+    padding-left: 0;
+    transform: none;
+}
+.link-container-left a:nth-last-child(2) {
+    display: block;
+    margin-top: 30px;
+    border-top: 5px outset #85b96b;
+}
+
+@font-face {
+    font-family: 'MinecraftRegular';
+    src: url('1_Minecraft-Regular(英细).otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.dropdown-menu,
+.dropdown-menu a {
+    font-family: 'MinecraftRegular', sans-serif;
+}
+
+.account-dropdown,
+.account-dropdown a {
+    font-family: Arial, sans-serif;
+}
+
+nav ul li a {
+    font-family: Arial, sans-serif;
+}
+.link-container-left p {
+    color: white;
+    font-size: 12px;
+}
+
+.link-container-left a { 
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.link-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 440px;
+    margin-top: 70px;
+}
+
+.link-container a {
+    font-size: 15px;
+    transition: transform 0.3s ease;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.link-container a:hover {
+    transform: scale(1.2);
+}
+
+.image-container {
+    display: flex;
+    gap: 40px;
+    max-height: 400px;
+    max-width: 300px;
+    justify-content: 30px;
+    margin: 60px 300px 0 100px;
+}
+
+.image-container img[src$=".jpg"] {
+    max-width: 400px;
+    max-height: 240px;
+}
+
+.image-container img[src$=".avif"] {
+    max-width: 200px;
+    height: 240px;
+}
+
+.dropdown-content img {
+    max-width: 200px;
+    height: 240px;
+    margin-bottom: 10px;
+}
+
+.dropdown-menu.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    margin-top: -20px;
+}
+
+.image-container a, .image-container a:hover {
+    background-color: transparent;
+    color: inherit;
+    padding-left: 0;
+    transform: none;
+    transition: none;
+}
+.link-container a:hover {
+    background-color: #85b96b;
+    color: #333;
+    padding-left: 20px;
+}
+
+nav ul li:hover .dropdown-menu {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+.image-container a p {
+    color: white;
+}
+.image-container a p:nth-child(3) {
+    color: rgb(255, 255, 255);
+    font-size: smaller;
+}
+.link-container-left a:hover {
+    background-color: transparent;
+    color: #85b96b;
+    padding-left: 0;
+    transform: none;
+}
+.link-container-left a:nth-last-child(2) {
+    display: block;
+    margin-top: 30px;
+    border-top: 5px outset #85b96b;
+}
+
+a[href="https://example.com/link1"],
+a[href="https://example.com/link2"] {
+    font-family: Arial, sans-serif;
+}
+.link-container-left a:hover {
+    background-color: transparent;
+    color: #85b96b;
+    padding-left: 0;
+    transform: none;
+}
+.link-container-left a:nth-last-child(2) {
+    display: block;
+    margin-top: 30px;
+    border-top: 5px outset #85b96b;
+}
